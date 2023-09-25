@@ -56,16 +56,19 @@ struct MovieRecord {
 |   ```marca```   |      Nombre de la marca del producto     |
 
 
-### SEQUENTIAL_FILE
+## SEQUENTIAL_FILE
 
 <div align="center">
     <img src="/sequential.PNG" />
 </div>
 
- - INSERTION
+ - INSERTION:
        El insertion se tomaron los diferentes caso. Primero se toma el caso base cuando el archivo esta vacio entonces se inserta en el .dat original. Apartir de este se hara comparaciones de las keys si es menor se              mandara al auxiliar y se enlazara, en caso sea mayor solo se verificara que si es el mayor que el elemento final que tendra un -1 y se insertara luego de este en el .dat original. Cuando se inserte un valor entre          diferentes valores se verificara el anterior mas proximo del .dat original, seguido de eso se verificara si el enlaze es a un registro de el aux o el .dat. Si es en el .dat solo se inserta al final del auxiliar y          se enlaza con el anterior, caso contrario, si enlaza al auxiliar se ira a ese valor del auxiliar y se buscara su enlace y sse verificara hasta encontrar el menor mas cercano para poder insertar nuestra key al final        del auxiliar y enlazarlo a este nuevo menor.
    
- - SEARCH
+ - SEARCH:
+       En la busqueda se implementa una funcion para obtener un par de elementos uno en el cual se esta tomando el record que se busca y el otro para almacenar la posicicon exacta donde se        encuentra el record. En el caso del sequential los enlaces se almacenan en un pair que tendra un int y un char. Esta funcion buscara unicamente en el .dat original, ya que, este            siempre se mantendra ordenado y si no lo encuentra buscara en menor mas cercano para asi hacer la busqueda en el aux.
+   
+ - RANGE_SEARCH 
        
         
    
