@@ -64,7 +64,7 @@ class secuential{
     string datos="datos.dat";
     string aux="datosaux.dat";
     string datosV="datosV.dat";
-    long n = 3;
+    long n = 100;
     long k = log2(n);
     int cont=0;
     pair<int,char> Header;
