@@ -59,7 +59,7 @@ struct MovieRecord {
 ### SEQUENTIAL_FILE
 
 <div align="center">
-    (https://github.com/IsaacVera10/Proj1_DB2/blob/main/sequential.PNG)
+    <img src="/sequential.PNG" />
 </div>
 
  - INSERTION
