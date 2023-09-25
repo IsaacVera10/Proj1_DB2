@@ -56,8 +56,12 @@ struct MovieRecord {
 |   ```marca```   |      Nombre de la marca del producto     |
 
 
+### SEQUENTIAL_FILE
 
-
+ - Para la inserción
+   
+### AVL_FILE
+### HASH_EXTENDIBLE
 ## Autores
 
 |                     **Salvador  Olivares**                   |                                 **Jeffrey**                                 |                       **Diego Rivadeneyra**                 |  **Isaac Vera Romero** |
