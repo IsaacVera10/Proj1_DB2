@@ -1,0 +1,55 @@
+int main()
+{
+    AVLFile avl("avl_tree.bin");
+
+    // Find a record by key
+    Record foundRecord = avl.find(101);
+    if (foundRecord.cod != -1)
+    {
+        cout << "Registro encontrado:" << endl;
+        foundRecord.showData();
+    }
+    else
+    {
+        cout << "No encontrado." << endl;
+    }
+
+    // Range search
+    int low = 202; 
+    int high = 404;
+    vector<Record> rangeResult = avl.range_search(low, high);
+    cout << "En el rango:  [" << low << ", " << high << "]:" << endl;
+    for ( auto &record : rangeResult)
+    {
+        record.showData();
+    }
+
+    // Inorder 
+    vector<Record> inorderResult = avl.inorder();
+    cout << "Inorder :" << endl;
+    for ( auto &record : inorderResult)
+    {
+        record.showData();
+    }
+    cout<< endl;
+
+
+    //Remover 
+    avl.remove(101);
+    cout << "Eliminando registro" << endl;
+
+   // Buscar eliminado
+    Record deleted= avl.find(101);
+    if (deleted.cod != -1)
+    {
+        cout << "Encontrado:" << endl;
+        deleted.showData();
+    }
+    else
+    {
+        cout << "Ha sido eliminado,no se encuentra" << endl;
+    }
+
+
+    return 0;
+}
