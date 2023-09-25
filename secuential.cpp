@@ -39,32 +39,58 @@ struct Record{
         punt={0,'r'};
     }
 
-    template <typename T>
-    void copyFromBuffer(const char*& buffer, T& variable) {
-        memcpy(&variable, buffer, sizeof(variable));
-        buffer += sizeof(variable);
+    friend bool operator<(Record &r1, Record &r2) {
+        string v1,v2;
+        for(int i=1;i<7;i++){
+            v1 += r1.id[i];
+        }
+        for(int i=1;i<7;i++){
+            v2 += r2.id[i];
+        }
+        return stoi(v1) < stoi(v2);
     }
 
-    void desempaquetar(const char* buffer, int n) {
-        const char* current = buffer;
-        current += sizeof(size_t);
-        copyFromBuffer(current, id);
-        copyFromBuffer(current, prenda);
-        copyFromBuffer(current, genero);
-        copyFromBuffer(current, precio);
-        copyFromBuffer(current, stock);
+    friend bool operator>(Record &r1, Record &r2) {
+        string v1,v2;
+        for(int i=1;i<7;i++){
+            v1 += r1.id[i];
+        }
+        for(int i=1;i<7;i++){
+            v2 += r2.id[i];
+        }
+        return stoi(v1) >stoi(v2);
+    }
+    friend bool operator==(Record &r1, Record &r2) {
+        string v1,v2;
+        for(int i=1;i<7;i++){
+            v1 += r1.id[i];
+        }
+        for(int i=1;i<7;i++){
+            v2 += r2.id[i];
+        }
+        return stoi(v1) == stoi(v2);
+    }
+    friend bool operator!=(Record &r1, Record &r2) {
+        string v1,v2;
+        for(int i=1;i<7;i++){
+            v1 += r1.id[i];
+        }
+        for(int i=1;i<7;i++){
+            v2 += r2.id[i];
+        }
+        return stoi(v1) != stoi(v2);
     }
 
     void show_data(){
-        cout<<"ID: "<<this->id<<" Prenda: "<<this->prenda<<" genero: "<<this->genero<<" precio: "<<this->precio<<" stock: "<<this->stock<<endl;
+        cout<<"ID: "<<this->id<<" Prenda: "<<this->prenda<<" genero: "<<this->genero<<" precio: "<<this->precio<<" stock: "<<this->stock<<" Marca: "<<this->marca<<endl;
     }
 };
     
 class secuential{
-    string datos="datos.dat";
+    string datos="datos2.dat";
     string aux="datosaux.dat";
     string datosV="datosV.dat";
-    long n = 100;
+    long n = 10000;
     long k = log2(n);
     int cont=0;
     pair<int,char> Header;
@@ -163,7 +189,7 @@ void secuential::add(Record Key){
         Header.second= 'd';
         file.write((char*)&Key, sizeof(Record));
         file.close();
-    }else if(size(aux)<n){ //Mientras que no se llene la Data
+    }else if(size(aux)<k){ //Mientras que no se llene la Data
         pair<Record,pair<int,char>> anterior = Search_Record(Key);
         if(anterior.second.first==-1){//Caso que el valor de la key sea al inicio de todo
             write_aux(Key,Header);
@@ -211,7 +237,7 @@ void secuential::add(Record Key){
                 Record val_a = anterior.first;
                 Read_data(aux,val_a);
                 
-                if(Key.id<val_a.id){
+                if(Key<val_a){
                     write_aux(Key,anterior.first.punt);
                     //actualizar el anterior
                     fstream file2(datos,ios::out|ios::in|ios::ate|ios::binary);
@@ -223,7 +249,7 @@ void secuential::add(Record Key){
                     anterior.second=anterior.first.punt;  //almacenar posicion actual
                     anterior.first=val_a;//almacenar posicion de enlaze
                     Read_data(aux,val_a);
-                    while(Key.id>val_a.id){
+                    while(Key>val_a){
                         if(val_a.punt.second=='d'){
                             val=false;
                             break;
@@ -268,9 +294,9 @@ pair<Record,pair<int,char>> secuential::Search_Record(Record Key){
         m=(u+l)/2;
         file.seekg(m*sizeof(Record));
         file.read((char*)&record, sizeof(Record));
-        if(Key.id < record.id){
+        if(Key < record){
             u= m-1;
-        }else if(Key.id  > record.id){
+        }else if(Key  > record){
             l= m+1;
         }else{
             retornar.first=record;
@@ -290,16 +316,17 @@ pair<Record,pair<int,char>> secuential::Search_Record(Record Key){
 template<typename T>
 vector<Record> secuential::rangeSearch(T begin_key, T end_key){
     Rebuild();
-    pair<Record,pair<int,char>> inicio = Search_Record(begin_key);
-    pair<Record,pair<int,char>> fin = Search_Record(end_key);
+    Record record= {begin_key," "," ",0.0," "," "} ;
+    Record record2= {end_key," "," ",0.0," "," "};
+    pair<Record,pair<int,char>> inicio = Search_Record(record);
+    pair<Record,pair<int,char>> fin = Search_Record(record2);
     vector<Record>rango;
-    while(inicio.first.id != fin.first.id ){
+    while(inicio.first != fin.first ){
         rango.push_back(inicio.first);
         ifstream file(datos,ios::binary);
         file.seekg(inicio.first.punt.first*sizeof(Record));
         file.read((char*)&inicio.first,sizeof(Record));
         file.close();
-        cout<<"inic "<<inicio.first.id<<endl;
     }
     rango.push_back(fin.first);
     return rango; 
@@ -358,7 +385,7 @@ void secuential::remove(T Key){
             pair<int,char> puntero=valor.second;
             Record almacen=valor.first;
             Read_data(aux,valor.first);
-            while(valor.first.id<Key){
+            while(valor.first<Key){
                 puntero=almacen.punt;
                 almacen=valor.first;
                 Read_data(aux,valor.first);
@@ -425,21 +452,35 @@ void secuential::Rebuild(){
 }
 
 int main() {
-    //secuential sequential;
+    secuential sequential;
     Record record;
 
-    ifstream file("datos2.dat", ios::binary); 
-    char * buffer = new char[sizeof(Record)];
+    ifstream file("datos.dat", ios::binary); 
     int dato=0;
-    while(dato<40){
-        file.seekg(dato* sizeof(Record));
-        file.read(buffer, sizeof(Record));
-        record.desempaquetar(buffer,sizeof(Record));
+    while(dato<50){
+        file.seekg(dato*33);
+        file.read((char*)&record, 33);
         record.show_data();
+        sequential.add(record);
         dato++;
     }
-    
     file.close();
+
+    /*
+    //forma de usar el range_search
+    vector<Record> almacen = sequential.rangeSearch("E000030","E000040");
+    for(int i=0;i<almacen.size();i++){
+        almacen[i].show_data();
+    }*/
+
+    // Record record1 = {"E020100","polo","M",13.3,"12","Dove"};
+    // Record record2 = {"E001000","polo","M",13.3,"12","Dove"};
+
+    // sequential.add(record1);
+    // sequential.add(record2);
+    // cout<<record1.id;
+    // record1.show_data();
+    // record2.show_data();
 
     //sequential.display();
 
