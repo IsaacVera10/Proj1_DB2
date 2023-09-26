@@ -68,8 +68,10 @@ struct MovieRecord {
  - SEARCH:
        En la busqueda se implementa una funcion para obtener un par de elementos uno en el cual se esta tomando el record que se busca y el otro para almacenar la posicicon exacta donde se        encuentra el record. En el caso del sequential los enlaces se almacenan en un pair que tendra un int y un char. Esta funcion buscara unicamente en el .dat original, ya que, este            siempre se mantendra ordenado y si no lo encuentra buscara en menor mas cercano para asi hacer la busqueda en el aux.
    
- - RANGE_SEARCH 
-       
+ - RANGE_SEARCH: 
+       Iniciamos haciendo un rebuild a nuestros registros y asi tener nuestro.dat con todos los registros y ordenados. Con ello, simplemente buscamos la key inicial y la key final. Finalmente, se hace un recorrido por los enlazes y se va haciendo push de los registros en un vector que luego sera mostrado.
+
+- REBUILD:
         
    
 ### AVL_FILE
