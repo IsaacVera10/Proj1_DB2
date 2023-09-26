@@ -76,6 +76,14 @@ struct MovieRecord {
         
    
 ### AVL_FILE
+    -FIND :
+        La función find en el AVL File se encarga de buscar un registro por su ID en el árbol AVL. Recorre el árbol comparando el id de cada nodo y en caso no se encuentre retornará vacío.
+    -RANGE_SEARCH:
+        Busca registros dentro de un rango de IDs. La función devuelve un vector que contiene todos los registros que se encuentran dentro del rango especificado.
+    -In-order:
+        La función inorder en el AVL File realiza un recorrido en orden del árbol AVL y devuelve los registros en ese orden.
+        La función recorre todo el árbol en orden ascendente según los IDs y devuelve un vector que contiene los registros en ese orden.
+        
 ### HASH_EXTENDIBLE
 ## Autores
 
