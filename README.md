@@ -87,8 +87,9 @@ struct MovieRecord {
 ### HASH_EXTENDIBLE
 
 Extendible Hashing es una técnica avanzada de organización de datos utilizada en bases de datos y sistemas de almacenamiento para acelerar las operaciones de búsqueda y recuperación de datos. Fue desarrollada para abordar los desafíos de manejar grandes volúmenes de información de manera eficiente y escalable.
-![image](https://github.com/IsaacVera10/Proj1_DB2/assets/83047305/bafe0616-7b46-4a1b-ae54-44da12e9c2d6)
-
+<div align="center">
+    <img src="/sequential.PNG" />
+</div>
 
 ## Autores
 
