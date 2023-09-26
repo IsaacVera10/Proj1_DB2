@@ -72,6 +72,7 @@ struct MovieRecord {
        Iniciamos haciendo un rebuild a nuestros registros y asi tener nuestro.dat con todos los registros y ordenados. Con ello, simplemente buscamos la key inicial y la key final. Finalmente, se hace un recorrido por los enlazes y se va haciendo push de los registros en un vector que luego sera mostrado.
 
 - REBUILD:
+      La funcion rebuild simplemente toma el Header y comienza a hacer todo el recorrido de enlazes almacenando cada registro en un nuevo .dat que almacenara todo de forma ordenada y al llegar al ultimo se mandara todo al .dat original sobreescribiendolo. Finalmente se vacia el auxiliar para volver ser usado.
         
    
 ### AVL_FILE
