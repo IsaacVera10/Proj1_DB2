@@ -87,9 +87,9 @@ struct MovieRecord {
 ### HASH_EXTENDIBLE
 ## Autores
 
-|                     **Salvador  Olivares**                   |                                 **Jeffrey**                                 |                       **Diego Rivadeneyra**                 |  **Isaac Vera Romero** |
-|:---------------------------------------------------------------------------------:|:-------------------------------------------------------------------------------------:|:-----------------------------------------------------------------------------------:|:----:|
-|           ![Sael](https://avatars.githubusercontent.com/u/83047305?v=4)            |      ![Juan Diego Castro](https://avatars.githubusercontent.com/u/79115974?v=4)       |              ![Diego Rivadeneyra](https://avatars.githubusercontent.com/u/55153225?v=4)              | ![Isaac Vera Romero](https://avatars.githubusercontent.com/u/67709665?v=4) |                                             
-| <a href="https://github.com/Sael-init" target="_blank">`https://github.com/Sael-init`</a> | <a href="https://github.com/AlexandroChamochumbi" target="_blank">`https://github.com/AlexandroChamochumbi`</a> | <a href="https://github.com/diegorivadeneyra" target="_blank">`https://github.com/diegorivadeneyra`</a> | <a href="https://github.com/IsaacVera10" target="_blank">`https://github.com/IsaacVera10`</a>|
+|                     **Salvador  Olivares**                   |                                 **Jeffrey**                                 |                       **Diego Rivadeneyra**                 
+|:---------------------------------------------------------------------------------:|:-------------------------------------------------------------------------------------:|:-----------------------------------------------------------------------------------:|
+|           ![Sael](https://avatars.githubusercontent.com/u/83047305?v=4)            |      ![Juan Diego Castro](https://avatars.githubusercontent.com/u/79115974?v=4)       |              ![Diego Rivadeneyra](https://avatars.githubusercontent.com/u/55153225?v=4)                                             
+| <a href="https://github.com/Sael-init" target="_blank">`https://github.com/Sael-init`</a> | <a href="https://github.com/AlexandroChamochumbi" target="_blank">`https://github.com/AlexandroChamochumbi`</a> | <a href="https://github.com/diegorivadeneyra" target="_blank">`https://github.com/diegorivadeneyra`</a> 
 
 
