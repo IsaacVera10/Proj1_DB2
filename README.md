@@ -91,8 +91,8 @@ Extendible Hashing es una técnica avanzada de organización de datos utilizada 
     <img src="/hash.png" />
 </div>
 
-_
-` bool find(typename RegisterType::KeyType key){      // The search function but with boolean as the return-type
+```
+ bool find(typename RegisterType::KeyType key){      // The search function but with boolean as the return-type
         char* i = hashFunc(key, global_depth);
         int index = get_bucket_pos_from_index(i);
         Bucket<RegisterType> bucket = bucket_from_bin(i);
@@ -108,7 +108,7 @@ _
             }
         }
         return false;
-    `
+```
 
 
 ## Autores
