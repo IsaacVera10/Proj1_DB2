@@ -91,6 +91,7 @@ Extendible Hashing es una técnica avanzada de organización de datos utilizada 
     <img src="/hash.png" />
 </div>
 
+- SEARCH:
 ```
  bool find(typename RegisterType::KeyType key){      // The search function but with boolean as the return-type
         char* i = hashFunc(key, global_depth);
@@ -109,6 +110,52 @@ Extendible Hashing es una técnica avanzada de organización de datos utilizada 
         }
         return false;
 ```
+- Remove:
+```
+ bool remove(typename RegisterType::KeyType key){    
+        char* i = hashFunc(key, profundidad_global);
+        int index = get_bucket_pos_from_index(i);
+        Bucket<RegisterType> bucket = bucket_from_bin(i);
+
+        while(true){
+            for(int j = 0; j < bucket.count; j++){
+                if(bucket.keys[j].getKey() == key) {
+                    redo_bucket(bucket, j);
+                    write_bucket(index, bucket);
+                    return true;
+                }
+            }
+            if(bucket.next != -1){
+                index = bucket.next;
+                bucket = read_bucket((bucket.next*sizeof(Bucket<RegisterType>))+sizeof(int));
+            } else {
+                break;
+            }
+        }
+        return false;
+    }
+```
+-Split:
+
+```
+ void split(Bucket<RegisterType> bucket, int index){ 
+        Bucket<RegisterType> new_b;
+        Bucket<RegisterType> old_b;
+        new_b.local_depth = bucket.local_depth+1;
+        old_b.local_depth = bucket.local_depth+1;
+
+        char* first_index = hashFunc(bucket.keys[0].getKey(), global_depth);;
+        for(int i = 0; i < bucket.count; i++){
+            char* ind = hashFunc(bucket.keys[i].getKey(), global_depth);
+        
+            if(ind[0] == '0') old_b.insert(bucket.keys[i]);
+            else new_b.insert(bucket.keys[i]);
+        }
+        write_bucket(index, old_b);
+        write_bucket(get_num_buckets(), new_b);
+    }
+```
+## Analisis
 
 
 ## Autores
