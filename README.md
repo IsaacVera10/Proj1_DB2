@@ -159,7 +159,8 @@ Extendible Hashing es una técnica avanzada de organización de datos utilizada 
 <div align="center">
     <img src="/cuadro.jpeg" />
 </div>
-
+Podemos observar que el avl es mas eficiente aparte de los 100k de datos insertados esto se debe a su practicidad al momento de generar
+ramas, y el mas caro es el Extendible Hash debido a que este constantemente esta generando buckets y va a depender de su profundidad global para no tener que estar generando overflows.
 ## Autores
 
 |                     **Salvador  Olivares**                   |                                 **Jeffrey**                                 |                       **Diego Rivadeneyra**                 
