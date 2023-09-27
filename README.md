@@ -86,10 +86,30 @@ struct MovieRecord {
         
 ### HASH_EXTENDIBLE
 
-Extendible Hashing es una técnica avanzada de organización de datos utilizada en bases de datos y sistemas de almacenamiento para acelerar las operaciones de búsqueda y recuperación de datos. Fue desarrollada para abordar los desafíos de manejar grandes volúmenes de información de manera eficiente y escalable.
+Extendible Hashing es una técnica avanzada de organización de datos utilizada en bases de datos y sistemas de almacenamiento para acelerar las operaciones de búsqueda y recuperación de datos. Fue desarrollada para abordar los desafíos de manejar grandes volúmenes de información de manera eficiente y escalable
 <div align="center">
-    <img src="/sequential.PNG" />
+    <img src="/hash.png" />
 </div>
+
+_
+` bool find(typename RegisterType::KeyType key){      // The search function but with boolean as the return-type
+        char* i = hashFunc(key, global_depth);
+        int index = get_bucket_pos_from_index(i);
+        Bucket<RegisterType> bucket = bucket_from_bin(i);
+
+        while(true){
+            for(int j = 0; j < bucket.count; j++){
+                if(bucket.keys[j].getKey() == key) return true;
+            }
+            if(bucket.next != -1){
+                bucket = read_bucket((bucket.next*sizeof(Bucket<RegisterType>))+sizeof(int));
+            } else {
+                break;
+            }
+        }
+        return false;
+    `
+
 
 ## Autores
 
