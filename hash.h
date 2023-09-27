@@ -8,6 +8,47 @@
 using namespace std;
 
 const int fillfactor = 5;
+struct RecordHash{
+    char cod[7];
+    char prenda[10];
+    char genero;
+    float precio;
+    int stock;
+    char marca[7];
+    RecordHash(){}
+    RecordHash(char _cod[7], char _prenda[10], char _genero, float _precio, int _stock, char _marca[7]){
+        for(int i=0;i<7;i++){
+            this->cod[i]= _cod[i];
+        }
+        for(int i=0;i<10;i++) {
+            this->prenda[i] = _prenda[i];
+        }
+        this->genero=_genero;
+        this->precio=_precio;
+        this->stock=_stock;
+
+        for(int i=0;i<7;i++){
+            this->marca[i]=_marca[i];
+        }
+    }
+    typedef std::string KeyType;
+
+    KeyType getKey(){
+        std::string a = "";
+        a = a + std::string((const char* const)cod);
+        return a;
+    }
+    void display(){
+        cout<<cod<<endl;
+        cout<<prenda<<endl;
+        cout<<genero<<endl;
+        cout<<precio<<endl;
+        cout<<stock<<endl;
+        cout<<marca<<endl;
+    }
+};
+
+
 
 struct Directory{
     char* key;
