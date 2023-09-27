@@ -156,7 +156,9 @@ Extendible Hashing es una técnica avanzada de organización de datos utilizada 
     }
 ```
 ## Analisis
-
+<div align="center">
+    <img src="/cuadro.jpeg" />
+</div>
 
 ## Autores
 
