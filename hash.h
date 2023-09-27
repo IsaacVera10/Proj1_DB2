@@ -7,7 +7,7 @@
 
 using namespace std;
 
-const int fillfactor = 5;   
+const int fillfactor = 5;
 
 struct Directory{
     char* key;
